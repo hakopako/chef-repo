@@ -1,0 +1,15 @@
+{
+	"httpd": {
+		"port": 80,
+		"server-tokens": "Prod",
+		"server-name": "localhost",
+		"allow-override": "All",
+		"server-signature": "Off"
+	},	
+	"php.ini": {
+		"timezone": "Asia/Tokyo"
+	},
+	"run_list":[
+		"recipe[set-up]"
+	]
+}
