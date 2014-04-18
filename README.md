@@ -17,4 +17,5 @@ chef-repo
  $ cd HOGE  
  $ git clone https://github.com/hakopako/chef-repo.git  
  $ cd chef-repo  
- $ knife solo cook HOGE
+ $ mv nodes/OSName.json.sample HOGE.json   
+ $ knife solo cook HOGE  
