@@ -15,6 +15,6 @@ chef-repo
 
 ### レシピ流す
  $ cd HOGE  
- $ git clone https://github.com/hakopako/chef-repo.git 
+ $ git clone https://github.com/hakopako/chef-repo.git  
  $ cd chef-repo  
  $ knife solo cook HOGE
