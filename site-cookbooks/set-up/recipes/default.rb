@@ -78,13 +78,23 @@ bash "upgrade_pear" do
 	EOH
 end
 
+bash "install_HTTP_Request2" do
+	user "root"
+	code "pear install HTTP_Request2"
+	not_if { ::File.exists?("/usr/share/pear/HTTP/Request2.php")}
+end
+
+bash "install_xml_serializer" do
+	user "root"
+	code "pear install --alldeps xml_serializer-beta"
+	not_if { ::File.exists?("/usr/share/pear/XML/Serializer.php")}
+end
+
 bash "install_phpunit" do
 	user "root"
 	code <<-EOH 
 		pear install -o pear.phpunit.de/PHPUnit 
 		pear install phpunit/PHP_CodeCoverage
-		pear install HTTP_Request2 
-		pear install --alldeps xml_serializer-beta
 	EOH
 	not_if { ::File.exists?("/usr/bin/phpunit")}
 end
