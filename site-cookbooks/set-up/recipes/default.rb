@@ -72,6 +72,7 @@ bash "upgrade_pear" do
 	user "root"
 	code <<-EOH
 		pear channel-discover pear.phpunit.de
+		pear channel-discover pear.symfony-project.com
 		pear channel-update pear.php.net
 		pear channel-discover components.ez.no  
 		pear upgrade pear  
@@ -93,8 +94,8 @@ end
 bash "install_phpunit" do
 	user "root"
 	code <<-EOH 
-		pear install -o pear.phpunit.de/PHPUnit 
-		pear install phpunit/PHP_CodeCoverage
+		pear install --alldeps phpunit/PHPUnit-3.4.15 
+		pear install --alldeps phpunit/PHP_CodeCoverage
 	EOH
 	not_if { ::File.exists?("/usr/bin/phpunit")}
 end
