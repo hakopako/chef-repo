@@ -49,17 +49,10 @@ end
 	httpd 
 	httpd-devel 
 	mysql-server 
-	php-mysql 
 	memcached 
-	php-pecl-memcache 
-	php-dom 
 	subversion 
 	git-core 
-	vim-enhanced 
-	php 
-	php-devel 
-	php-mbstring 
-	php-mcrypt 
+	vim-enhanced  
 	php-pear 
 }.each do |p|	
 	package p do
@@ -76,6 +69,7 @@ bash "upgrade_pear" do
 		pear channel-update pear.php.net
 		pear channel-discover components.ez.no  
 		pear upgrade pear  
+		pear config-set auto_discover 1  
 	EOH
 end
 
@@ -94,7 +88,7 @@ end
 bash "install_phpunit" do
 	user "root"
 	code <<-EOH 
-		pear install --alldeps phpunit/PHPUnit-3.4.15 
+		pear install pear.phpunit.de/PHPUnit 
 		pear install --alldeps phpunit/PHP_CodeCoverage
 	EOH
 	not_if { ::File.exists?("/usr/bin/phpunit")}
@@ -109,6 +103,21 @@ bash "install_jenkins" do
 		yum -y install jenkins
 	EOH
 	not_if { ::File.exists?("/usr/bin/jenkins")}
+end
+
+%w{
+	php-mysql 
+	php-pecl-memcache 
+	php-dom 
+	php 
+	php-devel 
+	php-mbstring 
+	php-mcrypt 
+}.each do |p|	
+	package p do
+		action :install
+		options "--enablerepo=remi --enablerepo=remi-php55"
+	end
 end
 
 ##################################################################
