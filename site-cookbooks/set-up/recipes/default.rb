@@ -175,4 +175,14 @@ service "jenkins" do
 	action [:enable, :start]
 end
 
+##################################################################
+### Other Commands
+##################################################################
+bash "symbolic_link_index" do
+	user "root"
+	code <<-EOH 
+		sudo rm -rf /var/www/html 
+		sudo ln -fs node['recipes']['index'] /var/www/html 
+	EOH
+end
 

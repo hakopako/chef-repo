@@ -9,6 +9,9 @@
 	"php.ini": {
 		"timezone": "Asia/Tokyo"
 	},
+	"recipes": {
+		"index": "/vagrant",
+	},
 	"run_list":[
 		"recipe[set-up]"
 	]
