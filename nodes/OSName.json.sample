@@ -10,7 +10,7 @@
 		"timezone": "Asia/Tokyo"
 	},
 	"recipes": {
-		"index": "/vagrant",
+		"index": "/vagrant"
 	},
 	"run_list":[
 		"recipe[set-up]"
