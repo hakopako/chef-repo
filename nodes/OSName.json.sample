@@ -9,8 +9,8 @@
 	"php.ini": {
 		"timezone": "Asia/Tokyo"
 	},
-	"recipes": {
-		"index": "/vagrant"
+	"paths": {
+		"DocumentRoot": "/vagrant"
 	},
 	"run_list":[
 		"recipe[set-up]"

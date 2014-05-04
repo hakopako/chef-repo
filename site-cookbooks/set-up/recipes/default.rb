@@ -182,7 +182,7 @@ bash "symbolic_link_index" do
 	user "root"
 	code <<-EOH 
 		sudo rm -rf /var/www/html 
-		sudo ln -fs node['recipes']['index'] /var/www/html 
+		sudo ln -fs #{node['paths']['DocumentRoot']} /var/www/html 
 	EOH
 end
 
