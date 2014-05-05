@@ -113,6 +113,7 @@ end
 	php-devel 
 	php-mbstring 
 	php-mcrypt 
+	php-pecl-xdebug  
 }.each do |p|	
 	package p do
 		action :install
